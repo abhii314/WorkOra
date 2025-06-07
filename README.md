@@ -1,30 +1,66 @@
 # 🚀 WorkOra - Django Job Portal
 
-Workora is a Django-powered job portal designed for blue-collar and service-based workers to find jobs and apply easily.
+**WorkOra** is a Django-powered job portal designed for blue-collar and service-based workers to find jobs and apply easily.
 
-## Features
+---
 
-- Job posting and application forms
+## ✨ Features
+
+- Post and apply for jobs
 - User registration and login
-- Responsive UI with Bootstrap (or your chosen CSS framework)
-- PostgreSQL database integration
-- Admin panel to manage everything
-- Deployed on Render with PostgreSQL
+- Admin panel to manage jobs and users
+- Responsive UI using Bootstrap
+- PostgreSQL database support
+- Deployed on Render (hosting)
+- Static files handled via WhiteNoise
 
-  ## 🔧 Tech Stack
+---
 
-- Django + Python
-- HTML, CSS, Bootstrap
-- PostgreSQL
-- Render (for deployment)
-- WhiteNoise (for static files)
-  
-## Installation
+## 🔧 Tech Stack
 
-1. Clone this repository:
+- **Backend**: Django, Python
+- **Frontend**: HTML, CSS, Bootstrap
+- **Database**: PostgreSQL
+- **Hosting**: Render
+- **Static Files**: WhiteNoise
 
-   ```bash
-   git clone https://github.com/your-username/WorkOra.git
-   cd WorkOra
+---
+
+## 📦 Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/abhii314/WorkOra.git
+cd WorkOra
+```
+### 2. Create & Activate Virtual Environment
+
+```bash
+python -m venv venv
+venv\Scripts\activate       # On Windows
+# source venv/bin/activate  # On Mac/Linux
+```
+
+### 3. Install Dependencies
+
+  ```bash
+pip install -r requirements.txt
+```
+### 4. Apply Migrations
+
+  ```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+### 5. Run Development Server
+
+  ```bash
+python manage.py runserver
+```
+
+Now open your browser and go to:
+http://127.0.0.1:8000/
+```
 
 
