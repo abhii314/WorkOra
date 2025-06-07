@@ -1,26 +1,30 @@
-# 🚀 Workora – Job Portal for Service Workers
+# 🚀 WorkOra - Django Job Portal
 
-Workora is a Django-powered job portal designed for blue-collar and service-based workers to find jobs and apply easily — no resumes required.
+Workora is a Django-powered job portal designed for blue-collar and service-based workers to find jobs and apply easily.
 
-## 🌟 Features
+## Features
 
-- Post & apply to jobs with easy forms
-- Contact form with email support
-- Responsive design using Bootstrap
+- Job posting and application forms
+- User registration and login
+- Responsive UI with Bootstrap (or your chosen CSS framework)
+- PostgreSQL database integration
 - Admin panel to manage everything
 - Deployed on Render with PostgreSQL
 
-## 🔧 Tech Stack
+  ## 🔧 Tech Stack
 
 - Django + Python
 - HTML, CSS, Bootstrap
 - PostgreSQL
 - Render (for deployment)
 - WhiteNoise (for static files)
+  
+## Installation
 
-## 📦 Installation
+1. Clone this repository:
 
-1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/workora.git
-   cd workora
+   git clone https://github.com/your-username/WorkOra.git
+   cd WorkOra
+
+
