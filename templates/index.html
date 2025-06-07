@@ -72,9 +72,31 @@
             transform: scale(1.1);
             box-shadow: 0 3px 8px rgba(0,0,0,0.15);
         }
-        h1{
-          margin-top:0;
-        }
+        @media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 1rem; /* Add space if hidden under navbar */
+  }
+
+  p.lead {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .p-5 {
+    padding: 2rem 1rem !important; /* Reduce padding on small devices */
+  }
+
+  .search-header h3 {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .container > .bg-light {
+    margin-top: 70px; /* Push content below navbar */
+  }
+}
     </style>
 </head>
 <body class="bg-light">
