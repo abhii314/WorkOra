@@ -1,0 +1,771 @@
+{% extends 'base.html' %}
+{%block body%} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Job Search - India</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <style>
+        .search-container {
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .search-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .search-header {
+            background: linear-gradient(135deg, #FF6F00 0%, #4CAF50 100%);
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 15px 20px;
+        }
+        
+        .search-btn {
+            transition: all 0.3s ease;
+            background-color: #138808;
+            border-color: #138808;
+        }
+        
+        .search-btn:hover {
+            transform: scale(1.05);
+            background-color: #0e6606;
+            border-color: #0e6606;
+            box-shadow: 0 5px 15px rgba(19, 136, 8, 0.3);
+        }
+        
+        .form-select:focus, .form-control:focus {
+            border-color: #FF9933;
+            box-shadow: 0 0 0 0.25rem rgba(255, 153, 51, 0.25);
+        }
+        
+        .trade-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+            vertical-align: text-bottom;
+        }
+        
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .job-type-badge {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .job-type-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <div class="container">
+        <div class="p-5 bg-light rounded-3">
+            <h1>Welcome to WorkOra</h1>
+            <p class="lead">Find the perfect job opportunity or post jobs to hire skilled workers.</p>
+        </div>
+    </div>
+
+    <div class="container my-4">
+        <div class="search-container">
+            <div class="search-header d-flex align-items-center">
+                <i class="fas fa-hard-hat fa-2x me-3"></i>
+                <h3 class="mb-0">Search Perfect Jobs From WorkOra</h3>
+            </div>
+            
+            <div class="p-4">
+                <form id="jobSearchForm">
+                    <div class="row align-items-end g-3">
+                        <!-- Job Title Selection -->
+                        <div class="col-lg-3 col-md-6">
+                            <label for="jobTitle" class="form-label fw-bold">
+                                <i class="fas fa-tools me-2"></i>Trade
+                            </label>
+                            <select class="form-select" id="jobTitle" required>
+                                <option value="" selected disabled>Select trade</option>
+                                <option value="electrician">Electrician</option>
+                                <option value="plumber">Plumber</option>
+                                <option value="carpenter">Carpenter</option>
+                                <option value="welder">Welder</option>
+                                <option value="mason">Mason/Raj Mistri</option>
+                                <option value="mechanic">Auto Mechanic</option>
+                                <option value="driver">Driver</option>
+                                <option value="tailor">Tailor</option>
+                                <option value="painter">Painter</option>
+                                <option value="fabricator">Fabricator</option>
+                                <option value="machine-operator">Machine Operator</option>
+                            </select>
+                        </div>
+                        
+                        <!-- City Selection -->
+                        <div class="col-lg-3 col-md-6">
+                            <label for="city" class="form-label fw-bold">
+                                <i class="fas fa-map-marker-alt me-2"></i>City
+                            </label>
+                            <select class="form-select" id="city" required>
+                                <option value="" selected disabled>Select location</option>
+                                <option value="delhi">Delhi-NCR</option>
+                                <option value="mumbai">Mumbai</option>
+                                <option value="bangalore">Bangalore</option>
+                                <option value="hyderabad">Hyderabad</option>
+                                <option value="chennai">Chennai</option>
+                                <option value="kolkata">Kolkata</option>
+                                <option value="pune">Pune</option>
+                                <option value="ahmedabad">Ahmedabad</option>
+                                <option value="surat">Surat</option>
+                                <option value="jaipur">Jaipur</option>
+                                <option value="lucknow">Lucknow</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Job Type Selection -->
+                        <div class="col-lg-3 col-md-6">
+                            <label for="jobType" class="form-label fw-bold">
+                                <i class="fas fa-clock me-2"></i>Job Type
+                            </label>
+                            <select class="form-select" id="jobType">
+                                <option value="any" selected>Any Type</option>
+                                <option value="full-time">Full Time</option>
+                                <option value="part-time">Part Time</option>
+                                <option value="contract">Contract</option>
+                                <option value="helper">Helper/Assistant</option>
+                                <option value="daily-wage">Daily Wage</option>
+                                <option value="apprentice">Apprenticeship</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Search Button -->
+                        <!-- <div class="col-lg-3 col-md-6">
+                            <button type="submit" class="btn btn-primary w-100 search-btn">
+                                <i class="fas fa-search me-2"></i>Find Jobs
+                            </button>
+                        </div> -->
+                        <div class="col-lg-3 col-md-6">
+                          <button type="submit" id="findJobsBtn" class="btn-primary w-100 search-btn py-2" style="color: #f8f9fa; border-radius: 4px;">
+                              <i class="fas fa-search me-2"></i>Find Jobs
+                          </button>
+                      </div>
+                    </div>
+                    
+                    <!-- Additional Filters Row -->
+                    <div class="row mt-3">
+                        <div class="col-lg-12">
+                            <div class="d-flex flex-wrap gap-2 align-items-center">
+                                <span class="fw-bold me-2">Quick filters:</span>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="immediateJoining">
+                                    <label class="form-check-label" for="immediateJoining">Immediate Joining</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="noExperience">
+                                    <label class="form-check-label" for="noExperience">Fresher Jobs</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="accommodationProvided">
+                                    <label class="form-check-label" for="accommodationProvided">Accommodation Provided</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="govtJobs">
+                                    <label class="form-check-label" for="govtJobs">Govt Jobs</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="recentOnly">
+                                    <label class="form-check-label" for="recentOnly">Last 3 Days</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+                <!-- Popular Job Types -->
+                <div class="mt-4">
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="fw-bold me-1">Popular trades:</span>
+                        <span class="badge bg-light text-dark border job-type-badge" onclick="selectJob('electrician')">
+                            <i class="fas fa-bolt text-warning me-1"></i> Electrician
+                        </span>
+                        <span class="badge bg-light text-dark border job-type-badge" onclick="selectJob('plumber')">
+                            <i class="fas fa-faucet text-primary me-1"></i> Plumber
+                        </span>
+                        <span class="badge bg-light text-dark border job-type-badge" onclick="selectJob('driver')">
+                            <i class="fas fa-taxi text-warning me-1"></i> Driver
+                        </span>
+                        <span class="badge bg-light text-dark border job-type-badge" onclick="selectJob('mason')">
+                            <i class="fas fa-toolbox text-danger me-1"></i> Mason
+                        </span>
+                        <span class="badge bg-light text-dark border job-type-badge" onclick="selectJob('tailor')">
+                            <i class="fas fa-cut text-secondary me-1"></i> Tailor
+                        </span>
+                        <span class="badge bg-light text-dark border job-type-badge" onclick="selectJob('machine-operator')">
+                            <i class="fas fa-cog text-info me-1"></i> Machine Operator
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Language Selection -->
+                <div class="mt-3 text-end">
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-outline-secondary active">English</button>
+                        <button type="button" class="btn btn-outline-secondary">हिंदी</button>
+                        <button type="button" class="btn btn-outline-secondary">தமிழ்</button>
+                        <button type="button" class="btn btn-outline-secondary">తెలుగు</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+
+        // Function to select a job from the popular trades badges
+        function selectJob(jobType) {
+            document.getElementById('jobTitle').value = jobType;
+            // Optional: Scroll to the job title field to show the selection
+            document.getElementById('jobTitle').scrollIntoView({behavior: 'smooth'});
+            // Optional: Add a highlight effect
+            document.getElementById('jobTitle').classList.add('is-valid');
+            setTimeout(() => {
+                document.getElementById('jobTitle').classList.remove('is-valid');
+            }, 1500);
+        }
+        
+
+        document.getElementById("findJobsBtn").addEventListener("click", function(){
+          const jobSection=document.getElementById("jobResults");
+          if(jobSection){
+            jobSection.scrollIntoView({behavior:"smooth"});
+          }
+        });
+    </script>
+
+
+
+
+
+<!-- JOB CARD-->
+    
+      <style>
+        body {
+          background-color: #f5f5f5;
+          padding: 20px;
+        }
+        .job-card {
+          transition: transform 0.3s;
+          margin-bottom: 20px;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .job-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .card-header {
+          background-color: #f8f9fa;
+          border-bottom: 1px solid #e9ecef;
+          padding: 0.75rem 1.25rem;
+        }
+        .location {
+          color: #6c757d;
+        }
+        .salary {
+          color: #28a745;
+          font-weight: bold;
+        }
+        .badge-verified {
+          background-color: #007bff;
+        }
+        .filter-section {
+          background: white;
+          border-radius: 8px;
+          padding: 15px;
+          margin-bottom: 20px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .card-body {
+          padding: 1.25rem;
+        }
+        .apply-btn {
+          width: 100%;
+        }
+        .company-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: white;
+            flex-shrink: 0;
+        }
+        .avatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+         color: white;
+        font-weight: bold;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 18px;
+          text-transform:uppercase;
+          }
+        .urgent-badge {
+          background-color: #dc3545;
+        }
+        .new-badge {
+          background-color: #28a745;
+        }
+        .popular-badge {
+          background-color: #fd7e14;
+        }
+        .whatsapp-btn {
+          background-color: #25D366;
+          border-color: #25D366;
+        }
+        .whatsapp-btn:hover {
+          background-color: #1da851;
+          border-color: #1da851;
+        }
+      </style>
+    </head>
+    <body>
+  
+       <div id="jobResults">
+          <!-- Job Card 1 -->
+            <div class="row">
+            {% for job in jobs %}
+          <div class="col-md-6 col-lg-4">
+            <div class="card job-card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  {%load avatar_tags%}
+                  <div class="avatar" style="background-color: {{ job.company|name_to_color }}">
+                              {{job.company|slice:':2'|upper}}
+                            </div>
+                  <div>
+                    <h5 class="mb-0 ms-3">{{ job.title }}</h5>
+                    <small class="text-muted ms-3">{{ job.company }}</small>
+                  </div>
+                </div>
+                {% if job.category == "Urgent" %}
+               <span class="badge bg-danger ms-2">{{job.category}}</span>
+                 {% elif job.category == "Full-Time" %}
+                <span class="badge bg-success rounded-pill">{{job.category}}</span>
+                 {% elif job.category == "Part-Time" %}
+                <span class="badge bg-info rounded-pill">{{job.category}}</span>
+                 {% elif job.category == "New" %}
+                <span class="badge bg-warning rounded-pill">{{job.category}}</span>
+                 {% endif %}
+              </div>
+               
+              <div class="card-body">
+                <div class="mb-3">
+                  <p class="location mb-1"><i class="fas fa-map-marker-alt me-2"></i>{{ job.location }}</p>
+                  <p class="salary mb-1"><i class="fas fa-rupee-sign me-2"></i>₹{{ job.salary_min }}-₹{{job.salary_max}}/{{job.salaryPeriod}}</p>
+                  <p class="experience mb-0"><i class="fas fa-briefcase me-2"></i>{{job.experience}} Experience</p>
+                </div>
+                <div class="mb-3">
+                  {% if job.detail_intro %}
+                   <p>• {{ job.detail_intro }}</p>
+                   {% endif %}
+
+                   {% if job.description %}
+               <p>• {{ job.description|truncatewords:20 }}</p>
+                        {% endif %}
+
+                {% if job.skill_required %}
+               <p>• {{ job.skill_required }}</p>
+                {% endif %}
+
+                  {% if job.detail_additional %}
+                <p>• {{ job.detail_additional }}</p>
+                  {% endif %}
+
+                </div>
+                <div class="d-flex gap-2">
+                 
+                  <a href="/applyJob" class="btn btn-primary w-100">Apply Now</a>
+
+                  {% if job.posted_by == request.user %}
+               <div class="text-end mt-1"> 
+        <a href="{% url 'delete_job' job.id %}" class="btn btn-danger btn-sm mt-1 ms-5"
+            onclick="return confirm('Are you sure you want to delete this job?');">
+            Delete
+            </a>
+          </div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                {% load custom_filters %}
+                <small><i class="fas fa-clock me-1"></i> {{ job.posted_at|posted_display }}</small>
+                <span class="float-end"><i class="fas fa-user me-1"></i>{{job.posted_by}}</span>
+              </div>
+            </div>
+          </div>
+           {% empty %}
+      <p>No jobs posted yet.</p>
+    {% endfor %}
+
+<!-- Job Card 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card job-card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img src="https://th.bing.com/th/id/OIP.SqsAD4Q7396N1m9nNapauQAAAA?rs=1&pid=ImgDetMain" alt="Company Logo" class="company-logo">
+                  <div>
+                    <h5 class="mb-0 ms-3">Electrician</h5>
+                    <small class="text-muted ms-3">L&T Construction</small>
+                  </div>
+                </div>
+                <span class="badge urgent-badge rounded-pill">Urgent</span>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <p class="location mb-1"><i class="fas fa-map-marker-alt me-2"></i>Gurugram, Haryana</p>
+                  <p class="salary mb-1"><i class="fas fa-rupee-sign me-2"></i>₹20,000 - ₹25,000/month</p>
+                  <p class="experience mb-0"><i class="fas fa-briefcase me-2"></i>2+ years experience</p>
+                </div>
+                <div class="mb-3">
+                  <p>• ITI certificate required</p>
+                  <p>• Local candidates preferred</p>
+                  <p>• Immediate joiners needed</p>
+                </div>
+                <div class="d-flex gap-2">
+               
+                  <a href="/applyJob" class="btn btn-primary w-100">Apply Now</a>
+                  <button class="btn btn-success whatsapp-btn"><i class="fab fa-whatsapp"></i></button>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <small><i class="fas fa-clock me-1"></i> Posted today</small>
+                <span class="float-end"><i class="fas fa-eye me-1"></i> 112 views</span>
+              </div>
+            </div>
+          </div>
+    
+
+<!-- Job Card 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card job-card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img src="https://i.pinimg.com/originals/03/49/35/034935bdb1f45d898779470718b9eb7b.png" alt="Company Logo" class="company-logo">
+                  <div>
+                    <h5 class="mb-0 ms-3">Delivery Executive</h5>
+                    <small class="text-muted ms-3">Zomato</small>
+                  </div>
+                </div>
+                <span class="badge popular-badge rounded-pill">Popular</span>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <p class="location mb-1"><i class="fas fa-map-marker-alt me-2"></i>Bangalore, Karnataka</p>
+                  <p class="salary mb-1"><i class="fas fa-rupee-sign me-2"></i>₹18,000 - ₹25,000/month</p>
+                  <p class="experience mb-0"><i class="fas fa-briefcase me-2"></i>No experience required</p>
+                </div>
+                <div class="mb-3">
+                  <p>• Two-wheeler and license required</p>
+                  <p>• Choose your hours, full/part time</p>
+                  <p>• Daily payment option available</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <a href="/applyJob" class="btn btn-primary w-100">Apply Now</a>
+                  <button class="btn btn-success whatsapp-btn"><i class="fab fa-whatsapp"></i></button>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <small><i class="fas fa-clock me-1"></i> Posted 3 days ago</small>
+                <span class="float-end"><i class="fas fa-eye me-1"></i> 456 views</span>
+              </div>
+            </div>
+          </div>
+
+
+
+<!-- Job Card 4 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card job-card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img src="https://img1.pnghut.com/10/11/21/AkEkjP8ybs/security-company-area-trademark-text-brand.jpg" alt="Company Logo" class="company-logo">
+                  <div>
+                    <h5 class="mb-0 ms-3">Security Guard</h5>
+                    <small class="text-muted ms-3">G4S Security</small>
+                  </div>
+                </div>
+                <span class="badge bg-secondary rounded-pill">Full-time</span>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <p class="location mb-1"><i class="fas fa-map-marker-alt me-2"></i>Noida, Uttar Pradesh</p>
+                  <p class="salary mb-1"><i class="fas fa-rupee-sign me-2"></i>₹12,000 - ₹15,000/month</p>
+                  <p class="experience mb-0"><i class="fas fa-briefcase me-2"></i>1+ year experience</p>
+                </div>
+                <div class="mb-3">
+                  <p>• 12-hour shift (day/night)</p>
+                  <p>• 10th pass required</p>
+                  <p>• Uniform and meals provided</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <a href="/applyJob" class="btn btn-primary w-100">Apply Now</a>
+                  <button class="btn btn-success whatsapp-btn"><i class="fab fa-whatsapp"></i></button>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <small><i class="fas fa-clock me-1"></i> Posted 5 days ago</small>
+                <span class="float-end"><i class="fas fa-eye me-1"></i> 189 views</span>
+              </div>
+            </div>
+          </div>
+    
+  <!-- Job Card 5 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card job-card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img src="https://primarysteel.in/wp-content/uploads/2020/07/Jsw-Logo-640x640.jpg" alt="Company Logo" class="company-logo">
+                  <div>
+                    <h5 class="mb-0 ms-3">Helper/Labor</h5>
+                    <small class="text-muted ms-3">JSW Steel</small>
+                  </div>
+                </div>
+                <span class="badge new-badge rounded-pill">New</span>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <p class="location mb-1"><i class="fas fa-map-marker-alt me-2"></i>Jamshedpur, Jharkhand</p>
+                  <p class="salary mb-1"><i class="fas fa-rupee-sign me-2"></i>₹10,000 - ₹12,000/month</p>
+                  <p class="experience mb-0"><i class="fas fa-briefcase me-2"></i>No experience required</p>
+                </div>
+                <div class="mb-3">
+                  <p>• 8-hour work with weekly off</p>
+                  <p>• Accommodation available</p>
+                  <p>• Health insurance included</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <a href="/applyJob" class="btn btn-primary w-100">Apply Now</a>
+                  <button class="btn btn-success whatsapp-btn"><i class="fab fa-whatsapp"></i></button>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <small><i class="fas fa-clock me-1"></i> Posted yesterday</small>
+                <span class="float-end"><i class="fas fa-eye me-1"></i> 85 views</span>
+              </div>
+            </div>
+          </div>
+
+
+<!-- Job Card 6 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="card job-card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <img src="https://th.bing.com/th/id/OIP.3Up_ITqP3Qi5YxGI80gAtQHaFj?rs=1&pid=ImgDetMain" alt="Company Logo" class="company-logo">
+                  <div>
+                    <h5 class="mb-0 ms-3">Driver</h5>
+                    <small class="text-muted ms-3">Ola Cabs</small>
+                  </div>
+                </div>
+                <span class="badge bg-info rounded-pill">Part-time</span>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <p class="location mb-1"><i class="fas fa-map-marker-alt me-2"></i>Mumbai, Maharashtra</p>
+                  <p class="salary mb-1"><i class="fas fa-rupee-sign me-2"></i>₹20,000 - ₹35,000/month</p>
+                  <p class="experience mb-0"><i class="fas fa-briefcase me-2"></i>2+ years driving experience</p>
+                </div>
+                <div class="mb-3">
+                  <p>• Valid driving license required</p>
+                  <p>• Choose your hours, earn more</p>
+                  <p>• Cars available for rent</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <a href="/applyJob" class="btn btn-primary w-100">Apply Now</a>
+                  <button class="btn btn-success whatsapp-btn"><i class="fab fa-whatsapp"></i></button>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <small><i class="fas fa-clock me-1"></i> Posted 1 week ago</small>
+                <span class="float-end"><i class="fas fa-eye me-1"></i> 320 views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+</div>
+
+
+    
+          <div class="row">
+          
+    
+          
+    
+          
+          
+          
+     
+
+
+
+        <!-- Load More Button -->
+        <div class="row mt-4">
+          <div class="col-12 text-center">
+            <button class="btn btn-outline-primary px-4" onclick="alert('No more jobs available')">Load More Jobs <i class="fas fa-chevron-down ms-1"></i></button>
+          </div>
+        </div>
+      
+      <!--FOOTER STYLE-->
+      <style>
+        .footer-link {
+            color: #e9ecef;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .social-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #e9ecef;
+            transition: color 0.3s;
+        }
+        .social-icon:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Company Info -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3 fw-bold">WorkOra Jobs</h5>
+                    <p class="mb-3">Connecting skilled workers with quality employers since 2025. Your trusted partner in blue-collar employment solutions.</p>
+                    <div class="mb-3">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Job Categories -->
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5 class="mb-3 fw-bold">Job Categories</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Construction</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Manufacturing</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Automotive</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Electrical</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Plumbing</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Welding</a></li>
+                    </ul>
+                </div>
+                
+                <!-- For Workers -->
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5 class="mb-3 fw-bold">For Workers</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Search Jobs</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Create Profile</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Career Resources</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Training Programs</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Certification Guide</a></li>
+                    </ul>
+                </div>
+                
+                <!-- For Employers -->
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5 class="mb-3 fw-bold">For Employers</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Post a Job</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Browse Resumes</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Pricing Plans</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Recruitment Tools</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5 class="mb-3 fw-bold">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Work Street, Suite 100</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> (555) 123-4567</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@WorkOrajobs.com</li>
+                        <li class="mt-3"><a href="#" class="footer-link">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="row mt-5">
+                <div class="col-lg-6 mx-auto">
+                    <h5 class="text-center mb-3">Subscribe to Our Newsletter</h5>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email address">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2025 WorkOra Jobs. All rights reserved.</p>
+                    <p style="font-size: 13px; color: #e0e0e0;">
+     All data used here is fictitious and for demonstration purposes only.
+  </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="footer-link me-3">Privacy Policy</a>
+                    <a href="#" class="footer-link me-3">Terms of Service</a>
+                    <a href="#" class="footer-link">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    
+
+
+
+</body>
+</html>
+
+{% endblock body%}
+
+
+
+
+
+

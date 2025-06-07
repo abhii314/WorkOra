@@ -1,0 +1,338 @@
+{% extends 'base.html'%} 
+
+{% block body%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - BlueCollar Jobs India</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 48, 99, 0.8), rgba(0, 48, 99, 0.9)), url("/api/placeholder/1200/600") center/cover no-repeat;
+            color: white;
+            padding: 80px 0;
+        }
+        .about-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .about-card:hover {
+            transform: translateY(-5px);
+        }
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(13, 110, 253, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #0d6efd;
+            margin-bottom: 1rem;
+        }
+        .stats-box {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            height: 100%;
+            transition: all 0.3s;
+        }
+        .stats-box:hover {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .testimonial-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .testimonial-content {
+            padding: 20px;
+        }
+        .testimonial-img {
+            height: 250px;
+            object-fit: cover;
+        }
+        .section-padding {
+            padding: 60px 0;
+        }
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-3">About WorkOra India</h1>
+        <p class="lead fs-4 mb-4">India's Premier Platform Connecting Skilled Workers with Quality Jobs</p>
+        <div class="d-flex justify-content-center">
+            <a href="#mission" class="btn btn-light btn-lg px-4 me-md-2">Our Mission</a>
+            <a href="#impact" class="btn btn-outline-light btn-lg px-4">Our Impact</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <div class="about-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1677529498680-fdb9d5ee762a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About Us" class="img-fluid w-100">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ps-lg-4">
+                    <h6 class="text-primary fw-bold">OUR STORY</h6>
+                    <h2 class="display-6 fw-bold mb-3">Bridging Skills & Opportunities</h2>
+                    <p class="lead mb-4">Founded in 2024 in Hyderabad, WorkOra India was born from a simple observation: despite India's massive workforce, skilled blue-collar workers struggled to find reliable employment while employers had difficulty finding quality talent.</p>
+                    <p>Today, we're proud to have facilitated over 10K job connections across 28 states, improving lives and supporting India's growing economy.</p>
+                    <div class="row g-3 mt-4">
+                        <div class="col-sm-6">
+                            <div class="d-flex">
+                                <div class="icon-box">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="mb-1">45K+</h5>
+                                    <p class="text-muted mb-0">Registered Workers</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex">
+                                <div class="icon-box">
+                                    <i class="bi bi-building"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="mb-1">10K+</h5>
+                                    <p class="text-muted mb-0">Employer Partners</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Values Section -->
+<section id="mission" class="bg-light section-padding">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-6 text-center">
+                <h6 class="text-primary fw-bold">OUR PURPOSE</h6>
+                <h2 class="display-6 fw-bold mb-3">Mission & Values</h2>
+                <p class="lead">Empowering India's blue-collar workforce with dignity and opportunity</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 about-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mx-auto">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+                        <h4 class="card-title mb-3 text-center">Our Mission</h4>
+                        <p class="card-text">To empower India's blue-collar workforce by creating accessible pathways to dignified employment and fair wages, while helping businesses find skilled, reliable workers to fuel their growth.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 about-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mx-auto">
+                            <i class="bi bi-eye"></i>
+                        </div>
+                        <h4 class="card-title mb-3 text-center">Our Vision</h4>
+                        <p class="card-text">A future where every skilled worker in India has access to stable, well-paying jobs with dignity, safety, and growth opportunities, contributing to a more equitable society.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 about-card">
+                    <div class="card-body p-4">
+                        <div class="icon-box mx-auto">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                        <h4 class="card-title mb-3 text-center">Our Values</h4>
+                        <p class="card-text">We operate with integrity, transparency, and respect for all workers. We believe in inclusivity, fairness, and creating opportunities that uplift communities across urban and rural India.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team & Testimonial Section -->
+<section id="impact" class="section-padding">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <h6 class="text-primary fw-bold">OUR TEAM</h6>
+                <h2 class="display-6 fw-bold mb-4">The Faces Behind WorkOra</h2>
+                <p>Led by industry experts with decades of combined experience in workforce management, technology, and labor advocacy.</p>
+                
+                <div class="d-flex align-items-center mb-4 mt-4">
+                    <img src="/api/placeholder/80/80" class="team-avatar" alt="Team Member">
+                    <div class="ms-3">
+                        <h5 class="mb-1">Abhijeet Kumar</h5>
+                        <p class="text-muted mb-2">Founder & CEO</p>
+                        <p class="small mb-0">"We're building technology that truly serves India's workforce."</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center mb-4">
+                    <img src="/api/placeholder/80/80" class="team-avatar" alt="Team Member">
+                    <div class="ms-3">
+                        <h5 class="mb-1">Patel</h5>
+                        <p class="text-muted mb-2">COO</p>
+                        <p class="small mb-0">"Our goal is to reach workers in every corner of India."</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center">
+                    <img src="/api/placeholder/80/80" class="team-avatar" alt="Team Member">
+                    <div class="ms-3">
+                        <h5 class="mb-1">Anand Mehta</h5>
+                        <p class="text-muted mb-2">CTO</p>
+                        <p class="small mb-0">"Simple technology for complex workforce challenges."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h6 class="text-primary fw-bold">TESTIMONIALS</h6>
+                <h2 class="display-6 fw-bold mb-4">What People Say</h2>
+                
+                <div class="testimonial-card mb-4">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://media.istockphoto.com/id/1049768822/photo/smiling-handsome-electrician-holding-toolbox-near-electrical-box-in-corridor-and-looking-at.jpg?s=1024x1024&w=is&k=20&c=-1CKLApMBwiss16YDgs7cu07MQvnBIuAb0kAIUEDzCo=" class="testimonial-img w-100" alt="testimonial">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="testimonial-content">
+                                <h5>Robert sen</h5>
+                                <p class="text-muted mb-3">Electrician, Chennai</p>
+                                <p class="mb-0">"Before using BlueCollar India, I struggled to find consistent work. Now I have steady jobs and earn twice what I made before. The app is easy to use even for someone like me who isn't very tech-savvy."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://plus.unsplash.com/premium_photo-1675272833910-b785ae9f04c8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="testimonial-img w-100" alt="Testimonial">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="testimonial-content">
+                                <h5>jack</h5>
+                                <p class="text-muted mb-3">Construction Manager, Delhi</p>
+                                <p class="mb-0">"As a project manager handling multiple construction sites, finding reliable workers was always a challenge. BlueCollar India has transformed our hiring process with verified skilled workers."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <h2 class="fw-bold mb-3">Ready to Connect?</h2>
+                <p class="lead mb-0">Whether you're looking to hire skilled workers or find quality jobs, we're here to help.</p>
+            </div>
+            <div class="col-lg-5 text-lg-end">
+                <a href="#" class="btn btn-light btn-lg me-2 mb-2 mb-md-0">Hire Workers</a>
+                <a href="#" class="btn btn-outline-light btn-lg">Find Jobs</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h5 class="mb-3"><i class="bi bi-tools me-2"></i>WorkOra India</h5>
+                <p class="mb-3">Connecting skilled workers with quality employment opportunities across India since 2025.</p>
+                <div class="d-flex">
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h6 class="mb-3">Quick Links</h6>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Find Jobs</a></li>
+                            <li class="mb-2"><a href="#" class="text-decoration-none text-white">Post Jobs</a></li>
+                            <li><a href="#" class="text-decoration-none text-white">Success Stories</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-decoration-none text-white">Our Team</a></li>
+                            <li class="mb-2"><a href="#" class="text-decoration-none text-white">Blog</a></li>
+                            <li><a href="#" class="text-decoration-none text-white">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h6 class="mb-3">Contact Us</h6>
+                <p class="mb-2"><i class="bi bi-geo-alt me-2"></i>123 Tech Park, Whitefield, Hyderabad</p>
+                <p class="mb-2"><i class="bi bi-telephone me-2"></i>+91 98765 43210</p>
+                <p><i class="bi bi-envelope me-2"></i>contact@WorkOra.com</p>
+            </div>
+        </div>
+        <hr class="my-3">
+        <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <p class="mb-0">&copy; 2025 WorkOra India. All rights reserved.</p>
+                <p style="font-size: 13px; color: #e0e0e0;">
+     All data used here is fictitious and for demonstration purposes only.
+  </p>
+            </div>
+            
+            <div class="col-md-6 text-md-end">
+                <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                <a href="#" class="text-white text-decoration-none">Terms</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{%endblock body%}

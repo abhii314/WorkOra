@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal - Signup</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .signup-container {
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #4e73df;
+            border-color: #4e73df;
+        }
+        .btn-primary:hover {
+            background-color: #2e59d9;
+            border-color: #2e59d9;
+        }
+        .signup-divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        .signup-divider:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #e0e0e0;
+        }
+        .signup-divider span {
+            position: relative;
+            background-color: white;
+            padding: 0 10px;
+            color: #6c757d;
+        }
+        .social-btn {
+            margin-bottom: 10px;
+        }
+        .user-type-selector {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4 mb-4">
+        <div class="signup-container">
+            <div class="logo">
+                <h1 class="text-primary">WorkOra</h1>
+                <p class="text-muted">Find your job today</p>
+            </div>
+            
+            <h4 class="mb-3 text-center">Create Your Account</h4>
+            {% if messages %}
+             <div class="alert alert-danger" role="alert"> 
+                {% for message in messages %}
+                    {{ message }}
+                     {% endfor %}
+                    </div>
+             {% endif %}
+             <style> 
+                .error {color: red;}
+                .success {color: green;}
+
+             </style>
+        
+            <div class="tab-content" id="userTypeTabContent">
+                <!-- Job Seeker Signup Form -->
+                <div class="tab-pane fade show active" id="jobseeker-form" role="tabpanel" aria-labelledby="jobseeker-tab">
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="first_name" placeholder="Enter first name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="last_name" placeholder="Enter last name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Username</label>
+                            <input type="username" class="form-control" id="email" name="username" placeholder="Enter Username" required>
+                            {% comment %} <div class="form-text">We'll never share your email with anyone else.</div> {% endcomment %}
+                        </div>
+                        
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Create password" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirm_password" placeholder="Confirm password" required>
+                            </div>
+                        </div>
+                        
+    
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="termsCheckJobseeker" required>
+                            <label class="form-check-label" for="termsCheckJobseeker">I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a></label>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                         
+                        <button type="submit" class="btn btn-primary btn-lg">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Employer Signup Form -->
+                <div class="tab-pane fade" id="employer-form" role="tabpanel" aria-labelledby="employer-tab">
+                    <form id="employerForm">
+                        <div class="mb-3">
+                            <label for="companyName" class="form-label">Company Name</label>
+                            <input type="text" class="form-control" id="companyName" placeholder="Enter company name" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="contactPerson" class="form-label">Contact Person Name</label>
+                            <input type="text" class="form-control" id="contactPerson" placeholder="Enter contact person name" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="companyEmail" class="form-label">Company Email</label>
+                            <input type="email" class="form-control" id="companyEmail" placeholder="company@example.com" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="companyPhone" class="form-label">Company Phone</label>
+                            <input type="tel" class="form-control" id="companyPhone" placeholder="Enter company phone" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="companyWebsite" class="form-label">Company Website</label>
+                            <input type="url" class="form-control" id="companyWebsite" placeholder="https://www.example.com">
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="employerPassword" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="employerPassword" placeholder="Create password" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="employerConfirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="employerConfirmPassword" placeholder="Confirm password" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="industryType" class="form-label">Industry</label>
+                            <select class="form-select" id="industryType" required>
+                                <option value="" selected disabled>Select your industry</option>
+                                <option value="tech">Technology</option>
+                                <option value="finance">Finance</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="education">Education</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="retail">Retail</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="companySize" class="form-label">Company Size</label>
+                            <select class="form-select" id="companySize" required>
+                                <option value="" selected disabled>Select company size</option>
+                                <option value="1-10">1-10 employees</option>
+                                <option value="11-50">11-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-500">201-500 employees</option>
+                                <option value="501+">501+ employees</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="termsCheckEmployer" required>
+                            <label class="form-check-label" for="termsCheckEmployer">I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a></label>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <!-- <button type="submit" class="btn btn-primary btn-lg">Create Employer Account</button> -->
+                            <a href="/index" class="btn btn-primary btn-lg" >Create Employer Account </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="signup-divider">
+                <span>OR</span>
+            </div>
+            
+            <div class="social-login">
+                <div class="d-grid gap-2 social-btn">
+                    <button class="btn btn-outline-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google me-2" viewBox="0 0 16 16">
+                            <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+                        </svg>
+                        Sign up with Google
+                    </button>
+                </div>
+                {% comment %} <div class="d-grid gap-2 social-btn">
+                    <button class="btn btn-outline-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin me-2" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                        </svg>
+                        Sign up with LinkedIn
+                    </button>
+                </div> {% endcomment %}
+            </div>
+            
+            <div class="text-center mt-4">
+                <p>Already have an account? <a href="/login" class="text-decoration-none fw-bold">Log in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+    
+       
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match. Please try again.');
+                 return;
+            }
+             
+            
+       
+    </script>
+</body>
+</html>

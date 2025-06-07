@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkOra - Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .login-container {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #4e73df;
+            border-color: #4e73df;
+        }
+        .btn-primary:hover {
+            background-color: #2e59d9;
+            border-color: #2e59d9;
+        }
+        .login-divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        .login-divider:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #e0e0e0;
+        }
+        .login-divider span {
+            position: relative;
+            background-color: white;
+            padding: 0 10px;
+            color: #6c757d;
+        }
+        .social-btn {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 mb-5">
+        <div class="login-container">
+            <div class="logo">
+                <h1 class="text-primary">WorkOra</h1>
+                <span class="text-muted">Connecting Employer with Job Seekers</span>
+            </div>
+            
+            <h4 class="mb-4 text-center">Login to Your Account</h4>
+            {% if messages %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                     {% endfor %}
+                    </div>
+             {% endif %}
+            
+            <form id="loginForm" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="email" class="form-label">Username</label>
+                    <input type="username" class="form-control" id="email" name='username' placeholder="Enter your username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <div class="d-grid gap-2"> 
+
+                     <button type="submit" class="btn btn-primary btn-lg">Login</button>
+
+                </div>
+                <div class="text-end mt-2">
+                    <a href="#" class="text-decoration-none">Forgot password?</a>
+                </div>
+            </form>
+            
+            <div class="login-divider">
+                <span>OR</span>
+            </div>
+            
+            <div class="social-login">
+                <div class="d-grid gap-2 social-btn">
+                    <button class="btn btn-outline-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google me-2" viewBox="0 0 16 16">
+                            <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+                        </svg>
+                        Continue with Google
+                    </button>
+                </div>
+                
+            </div>
+            
+            <div class="text-center mt-4">
+                <p>Don't have an account? <a href="/signup" class="text-decoration-none fw-bold">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+   
+</body>
+</html>

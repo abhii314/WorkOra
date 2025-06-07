@@ -1,0 +1,222 @@
+{% extends 'base.html'%}
+{%block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Collar Careers India</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .career-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .career-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Skill Careers India</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#careers">Careers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#training">Training</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Build Your Future in India</h1>
+            <p class="lead mb-4">Discover rewarding skilled trade careers with good pay and job security</p>
+            <a href="#careers" class="btn btn-primary btn-lg px-4">Explore Careers</a>
+        </div>
+    </section>
+
+    <!-- Career Paths Section -->
+    <section id="careers" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">In-Demand Career Paths</h2>
+            
+            <div class="row g-4">
+                <!-- Career Card 1 -->
+                <div class="col-md-4">
+                    <div class="card career-card h-100">
+                        <div class="card-body text-center p-4">
+                            <h3 class="card-title">Electrician</h3>
+                            <p class="card-text">Install and repair electrical systems in homes, businesses and infrastructure.</p>
+                            <hr>
+                            <p><strong>Salary:</strong> ₹15,000 - ₹30,000/month</p>
+                            <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Career Card 2 -->
+                <div class="col-md-4">
+                    <div class="card career-card h-100">
+                        <div class="card-body text-center p-4">
+                            <h3 class="card-title">Auto Mechanic</h3>
+                            <p class="card-text">Repair vehicles and maintain automotive systems for India's growing vehicle market.</p>
+                            <hr>
+                            <p><strong>Salary:</strong> ₹12,000 - ₹25,000/month</p>
+                            <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Career Card 3 -->
+                <div class="col-md-4">
+                    <div class="card career-card h-100">
+                        <div class="card-body text-center p-4">
+                            <h3 class="card-title">AC Technician</h3>
+                            <p class="card-text">Install and repair air conditioning systems as demand grows across India.</p>
+                            <hr>
+                            <p><strong>Salary:</strong> ₹12,000 - ₹30,000/month</p>
+                            <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Section -->
+    <section id="training" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Training Options</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">ITI Training</h4>
+                            <p>Industrial Training Institutes offer government-certified courses in various trades.</p>
+                            <ul>
+                                <li>6 months to 2 years duration</li>
+                                <li>Widely recognized certificates</li>
+                                <li>Low-cost training options</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Pradhan Mantri Kaushal Vikas Yojana</h4>
+                            <p>Government scheme offering free skill training and certification.</p>
+                            <ul>
+                                <li>Short-term training programs</li>
+                                <li>Financial rewards for completing training</li>
+                                <li>Placement assistance available</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Story -->
+    <section class="py-5">
+        <div class="container">
+            <div class="card">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 text-center">
+                            <img src="/api/placeholder/150/150" alt="Success Story" class="rounded-circle mb-3 mb-md-0">
+                        </div>
+                        <div class="col-md-9">
+                            <h4>"After completing my ITI in electrical, I now earn more than many college graduates."</h4>
+                            <p class="mb-0 text-muted">- Rajesh Kumar, Electrician in Delhi NCR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-primary text-white text-center">
+        <div class="container">
+            <h2 class="mb-4">Ready to Start Your Career?</h2>
+            <button type="button" class="btn btn-light px-4 py-2" data-bs-toggle="modal" data-bs-target="#contactModal">
+                Talk to an Advisor
+            </button>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Get Career Guidance</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="interest" class="form-label">Career Interest</label>
+                            <select class="form-select" id="interest">
+                                <option selected>Choose an area...</option>
+                                <option>Electrical</option>
+                                <option>Plumbing</option>
+                                <option>Automotive</option>
+                                <option>Construction</option>
+                                <option>AC & Refrigeration</option>
+                                <option>Computer Hardware</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Skill Careers India. All rights reserved.</p>
+            <p style="font-size: 13px; color: #e0e0e0;">
+     All data used here is fictitious and for demonstration purposes only.
+  </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+{%endblock body%}
