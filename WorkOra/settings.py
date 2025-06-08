@@ -27,9 +27,13 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [ os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'localhost')]
 
-
+ALLOWED_HOSTS = [
+    os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'localhost'),
+    "workora.xyz",
+    "www.workora.xyz",
+    "workora-zg07.onrender.com",
+]
 
 # Application definition
 
