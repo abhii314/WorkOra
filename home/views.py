@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 
 def home(request):
@@ -140,5 +142,14 @@ def submit_application(request):
 
         return redirect('home')
 
-
+def reset_admin(request):
+    try:
+        user = User.objects.get(username="abhii")  # or whatever your username is
+        user.set_password("admin123")  # set a new password you will remember
+        user.is_superuser = True
+        user.is_staff = True
+        user.save()
+        return HttpResponse("✅ Admin reset done.")
+    except Exception as e:
+        return HttpResponse(f"❌ Error: {e}")
 # Create your views here.

@@ -1,6 +1,11 @@
 from django.urls import path
 from .import views
 from django.contrib.auth import views as auth_views
+from .views import reset_admin
+
+
+   
+   
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -20,5 +25,7 @@ urlpatterns = [
 
     path('login', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('delete-job/<int:job_id>/', views.delete_job, name='delete_job'),
+     path('reset-admin/', reset_admin),
+
 
 ]
