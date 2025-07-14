@@ -3,3 +3,9 @@ __pycache__/
 .vscode/
 *.log
 render.yaml
+# Virtual environment
+.venv/
+
+# Local environment variables
+.env
+
